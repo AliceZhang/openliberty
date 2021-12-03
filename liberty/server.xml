@@ -1,0 +1,30 @@
+<server description="Sample Liberty server">
+
+  <featureManager>
+      <feature>jaxrs-2.1</feature>
+      <feature>jsonp-1.1</feature>
+          <!-- tag::servlet[] -->
+        <feature>servlet-4.0</feature>
+    <!-- end::servlet[] -->
+    <!-- tag::springboot[] -->
+        <feature>springBoot-2.0</feature>
+    <!-- end::springboot[] -->
+  </featureManager>
+
+  <variable name="default.http.port" defaultValue="9080"/>
+  <variable name="default.https.port" defaultValue="9443"/>
+
+  <httpEndpoint host="*" httpPort="${default.http.port}" httpsPort="${default.https.port}" id="defaultHttpEndpoint" />
+
+  <webApplication location="guide-rest-client-reactjs.war" contextRoot="/"/>
+
+  <webApplication location="guide-spring-boot-0.1.0.war"   contextRoot="/api">
+  </webApplication>
+
+      <!-- tag::springBootApplication[] 
+  <springBootApplication id="guide-spring-boot" 
+                           location="thin-guide-spring-boot-0.1.0.jar"
+                           name="guide-spring-boot" 
+                           contextRoot="/hello"/> -->
+ 
+</server>
